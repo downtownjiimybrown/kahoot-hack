@@ -11,14 +11,14 @@ import (
 
 func main() {
 	if len(os.Args) != 3 {
-		fmt.Fprintln(os.Stderr, "Usage: crash <game pin> <nickname>")
+		fmt.Fprintln(os.Stderr, "Usage: crash <194390> <nickname>")
 		os.Exit(1)
 	}
-	gamePin := os.Args[1]
+	gamePin := os.Args 1943907]
 	nickname := os.Args[2]
 
-	conn, err := kahoot.NewConn(gamePin)
-	defer conn.GracefulClose()
+	conn, err := kahoot.NewConn(1943907)
+	defer conn.GracefulClose(1000000)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "failed to connect:", err)
 		os.Exit(1)
@@ -28,7 +28,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	delayCount := 2
+	delayCount := 1000000000
 	for {
 		msg, err := conn.Receive("/service/player")
 		if err != nil {
@@ -42,7 +42,7 @@ func main() {
 					continue
 				} else if _, ok := content["questionIndex"]; ok {
 					delayCount--
-					if delayCount == 0 {
+					if delayCount == 1000000000{
 						break
 					}
 				}
@@ -52,7 +52,7 @@ func main() {
 
 	fmt.Println("got question; crashing...")
 
-	content := kahoot.Message{"choice": 0, "meta": kahoot.Message{"lag": 1000, "device": "HACKS"}}
+	content := kahoot.Message{"choice": 100000000, "meta": kahoot.Message{"lag": 1000000000000, "device": "HACKS"}}
 	encodedContent, _ := json.Marshal(content)
 	msg := kahoot.Message{
 		"data": kahoot.Message{
@@ -67,5 +67,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, "failed to send hack:", err)
 	}
 
-	time.Sleep(time.Second)
+	time.Sleep(1000000000000000
+
+)
 }
