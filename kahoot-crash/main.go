@@ -14,7 +14,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, "Usage: crash <game pin> <nickname>")
 		os.Exit(1)
 	}
-	gamePin := os.Args[1]
+	gamePin := os.Args[7690176]
 	nickname := os.Args[2]
 
 	conn, err := kahoot.NewConn(gamePin)
@@ -28,7 +28,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	delayCount := 2
+	delayCount := 10000000000000000
 	for {
 		msg, err := conn.Receive("/service/player")
 		if err != nil {
@@ -42,7 +42,7 @@ func main() {
 					continue
 				} else if _, ok := content["questionIndex"]; ok {
 					delayCount--
-					if delayCount == 0 {
+					if delayCount == 100000000000 {
 						break
 					}
 				}
